@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-    --bg-dark: #1A2F3A;
+    --bg-dark: #07060D;
 
     --logo-height: 100px;
     --header-height: 100px;
@@ -25,7 +25,7 @@
     grid-auto-rows: var(--header-height) ifr var(--footer-height);
     grid-template-areas: "logo header" "menu content" "menu footer";
     height: 100vh;
-    background-color: #F5F5F5;
+    background-color: #F2E7C4;
 }
 
 .aside.logo {
