@@ -1,7 +1,3 @@
-aside.menu-area {
-    background-color: var(--bg-dark);
-}
-
 .menu a {
     display: block;
     text-decoration: none;
@@ -11,5 +7,5 @@ aside.menu-area {
 }
 
 .menu a:hover {
-    background: #f2eeeb49;
+    background: #F2EEEB;
 }
