@@ -1,6 +1,6 @@
 footer.footer {
     display: flex;
-    align-items: center;
+    align-items: self-end;
     justify-content: flex-end;
-    padding: 0 25px;
+    padding: 25px;
 }

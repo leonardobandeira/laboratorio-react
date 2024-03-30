@@ -12,7 +12,7 @@ import Footer from '../components/templete/Footer'
 export default props =>
     <div className='app'>
         <Logo />
-        <Nav />
         <Main icon="home" title="Início" subtitle="CRUD em React" />
+        <Nav />
         <Footer />
     </div>

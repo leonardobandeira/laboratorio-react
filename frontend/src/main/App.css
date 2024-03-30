@@ -23,18 +23,23 @@
     margin: 0px;
     display: grid;
     grid-template-columns: var(--aside-width) 1fr;
-    grid-auto-rows: var(--header-height) ifr var(--footer-height);
-    grid-template-areas: "logo header" "menu content" "menu footer";
+    grid-template-rows: var(--logo-height) var(--header-height) 1fr ;
+    grid-template-areas: 
+        "logo header" 
+        "menu content" 
+        "menu footer"; 
     height: 100vh;
     background-color: #F2E7C4;
 }
 
 .aside.logo {
     grid-area: logo;
+    max-height: var(--logo-height); 
 }
 
 header.header {
     grid-area: header;
+    max-height: var(--header-height);
 }
 
 aside.menu-area {
