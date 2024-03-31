@@ -5,3 +5,9 @@ footer.footer {
     padding: 25px;
     box-shadow: var(--shadow);
 }
+
+@media(max-width: 576px){
+    aside.logo img {
+        width: 350px;
+    }
+}

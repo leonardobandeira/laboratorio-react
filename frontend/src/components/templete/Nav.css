@@ -1,8 +1,8 @@
-
-aside{
+aside {
     background-color: var(--bg-dark);
     box-shadow: var(--shadow);
 }
+
 .menu a {
     display: block;
     text-decoration: none;
@@ -14,4 +14,19 @@ aside{
 .menu a:hover {
     background: #F2F2F2;
     color: black;
+}
+
+@media(max-width: 768px) {
+    .menu {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 100%;
+    }
+
+    .menu a {
+        display: inline;
+        padding: 10px;
+        margin: 0px;
+    }
 }

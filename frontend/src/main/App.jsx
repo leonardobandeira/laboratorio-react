@@ -17,5 +17,6 @@ export default props =>
             <Logo />
             <Nav />
             <Routes />
+            <Footer/>
         </div>
     </HashRouter>
