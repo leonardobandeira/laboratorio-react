@@ -1,9 +1,16 @@
 import './App.css'
 
+import { Cabecalho, Conteudo } from './components';
+
 const App = () => {
   return (
-    <h1>Olá mundo!</h1>
+    <>
+      <Cabecalho />
+      <Conteudo>
+        <h1>Conteudo</h1>
+      </Conteudo>
+    </>
   )
 };
 
-export default App;
+export { App };
