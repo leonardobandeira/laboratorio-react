@@ -1,6 +1,6 @@
 import './App.css'
 
-import { Cabecalho, Conteudo } from './components';
+import { Cabecalho, Conteudo, Rodape } from './components';
 
 const App = () => {
   return (
@@ -9,6 +9,7 @@ const App = () => {
       <Conteudo>
         <h1>Conteudo</h1>
       </Conteudo>
+      <Rodape criador="Leoanrdo Bandeira" />
     </>
   )
 };

@@ -1,0 +1,13 @@
+.Rodape {
+    background-color: var(--preto);
+    color: var(--cinza);
+    padding: 0.5rem 1rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.Rodape span {
+    color: var(--rosa);
+}
