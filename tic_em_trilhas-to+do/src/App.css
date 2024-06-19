@@ -1,7 +1,24 @@
-:root {}
+:root {
+  --cinza: #EBEBEB;
+  --preto: #272726;
+  --rosa: #F06197;
+  --verde: #36B59F;
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  background-color: var(--cinza);
+}
+
+body,
+input,
+textarea,
+button {
+  font-size: 1rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
