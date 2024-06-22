@@ -2,7 +2,11 @@ import style from './CampoTexto.module.css'
 
 const CampoTexto = (props) => {
     return (
-        <input {...props} className={style.CampoTexto} />
+        <input
+            type='text'
+            className={style.CampoTexto}
+            {...props}
+        />
     )
 }
 
