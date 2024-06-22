@@ -1,6 +1,6 @@
 import './App.css'
 
-import { Cabecalho, Conteudo, Rodape } from './components';
+import { Cabecalho, Conteudo, FormularioCriarTarefa, Rodape } from './components';
 
 import { Inicial } from './pages';
 
@@ -11,6 +11,7 @@ const App = () => {
       <Conteudo>
         <h1>Conteudo</h1>
         <Inicial />
+        <FormularioCriarTarefa />
       </Conteudo>
       <Rodape criador="Leoanrdo Bandeira" />
     </>
