@@ -1,12 +1,14 @@
-const ListaTarefas = () => {
-    return (
-        <ul>
-            <li>Item 1</li>
-            <li>Item 2</li>
-            <li>Item 3</li>
-            <li>Item 4</li>
-        </ul>
-    )
-}
+import style from './ListaTarefas.module.css'
+import { ListaTarefasItem } from './ListaTarefasItem/ListaTarefasItem';
 
-export { ListaTarefas }
+const ListaTarefas = () => {
+  return (
+    <ul className={style.ListaTarefa}>
+      <ListaTarefasItem nome="Item 1"/>
+      <ListaTarefasItem nome="Item 2"/>
+      <ListaTarefasItem nome="Item 3"/>
+    </ul>
+  );
+};
+
+export { ListaTarefas };
