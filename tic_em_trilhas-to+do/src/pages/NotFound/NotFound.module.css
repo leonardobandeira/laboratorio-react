@@ -1,0 +1,8 @@
+.NotFound{
+    display: flex;
+    justify-content: center;
+}
+
+.NotFound h1 {
+    color: var(--cinza);
+}
