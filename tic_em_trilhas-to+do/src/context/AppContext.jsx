@@ -24,8 +24,18 @@ export const AppContextProvider = (props) => {
     });
   };
 
+  const removerTarefa = (id) => {
+    setTarefas((estadoAtual) => {
+      const listaAtualizada = estadoAtual.filter((tarefa) => tarefa.id != id);
+
+      return [...listaAtualizada];
+    });
+  };
+
   return (
-    <AppContext.Provider value={{ criador, tarefas, adicionarTarefa }}>
+    <AppContext.Provider
+      value={{ criador, tarefas, adicionarTarefa, removerTarefa }}
+    >
       {children}
     </AppContext.Provider>
   );
