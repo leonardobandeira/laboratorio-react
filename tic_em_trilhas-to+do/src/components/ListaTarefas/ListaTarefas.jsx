@@ -1,8 +1,9 @@
 import style from "./ListaTarefas.module.css";
 import { ListaTarefasItem } from "./ListaTarefasItem/ListaTarefasItem";
+import { useAppContext } from './../../hooks'
 
-const ListaTarefas = (props) => {
-  const { tarefas } = props;
+const ListaTarefas = () => {
+    const { tarefas } = useAppContext();
 
   return (
     <ul className={style.ListaTarefa}>

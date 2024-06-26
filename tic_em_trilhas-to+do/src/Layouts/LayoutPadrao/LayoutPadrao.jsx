@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 import { Cabecalho, Conteudo, Rodape } from "../../components";
-import { useAppConstant } from "../../hooks/useAppContext";
+import { useAppContext } from "../../hooks/useAppContext";
 
 const LayoutPadrao = () => {
-  const { criador } = useAppConstant();
-  
+  const { criador } = useAppContext();
+
   return (
     <>
       <Cabecalho />

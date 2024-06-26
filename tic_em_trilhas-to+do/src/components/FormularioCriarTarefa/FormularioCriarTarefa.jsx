@@ -1,12 +1,14 @@
 import style from "./FormularioCriarTarefa.module.css";
 
+import { useState } from "react";
+import { useAppContext } from "../../hooks";
+
 import { Botao } from "../Botao/Botao";
 import { CampoTexto } from "../CampoTexto";
-import { useState } from "react";
 
-const FormularioCriarTarefa = (props) => {
+const FormularioCriarTarefa = () => {
   const [nomeTarefa, setNomeTarefa] = useState("");
-  const { setTarefas } = props;
+  const { setTarefas } = useAppContext();
 
   const onChangeNomeTarefa = (event) => {
     setNomeTarefa(event.currentTarget.value);
