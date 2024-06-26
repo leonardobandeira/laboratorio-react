@@ -13,8 +13,19 @@ export const AppContextProvider = (props) => {
     { id: 3, nome: "Item 3" },
   ]);
 
+  const adicionarTarefa = (nomeTarefa) => {
+    setTarefas((listaOld) => {
+      const tarefa = {
+        id: listaOld.length,
+        nome: nomeTarefa,
+      };
+
+      return [...listaOld, tarefa];
+    });
+  };
+
   return (
-    <AppContext.Provider value={{ criador, tarefas, setTarefas }}>
+    <AppContext.Provider value={{ criador, tarefas, adicionarTarefa }}>
       {children}
     </AppContext.Provider>
   );

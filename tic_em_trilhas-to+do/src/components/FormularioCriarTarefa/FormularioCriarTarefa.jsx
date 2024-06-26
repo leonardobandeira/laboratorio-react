@@ -8,30 +8,23 @@ import { CampoTexto } from "../CampoTexto";
 
 const FormularioCriarTarefa = () => {
   const [nomeTarefa, setNomeTarefa] = useState("");
-  const { setTarefas } = useAppContext();
+  const { adicionarTarefa } = useAppContext();
 
   const onChangeNomeTarefa = (event) => {
     setNomeTarefa(event.currentTarget.value);
   };
 
-  const adicionarTarefa = (event) => {
+  const submeterFormulario = (event) => {
     event.preventDefault();
 
     if (!nomeTarefa) return;
 
-    setTarefas((listaOld) => {
-      const tarefa = {
-        id: listaOld.length,
-        nome: nomeTarefa,
-      };
-
-      return [...listaOld, tarefa];
-    });
+    adicionarTarefa(nomeTarefa);
 
     setNomeTarefa("");
   };
   return (
-    <form className={style.FormularioCriarTarefa} onSubmit={adicionarTarefa}>
+    <form className={style.FormularioCriarTarefa} onSubmit={submeterFormulario}>
       <CampoTexto value={nomeTarefa} onChange={onChangeNomeTarefa} />
       <Botao texto="+" />
     </form>
