@@ -1,13 +1,13 @@
-import style from './Conteudo.module.css'
+import style from "./Conteudo.module.css";
 
 const Conteudo = (props) => {
-    const { children } = props;
+  const { children } = props;
 
-    return (
-        <div className={style.Conteudo}>
-            {children}
-        </div>
-    )
-}
+  return (
+    <div className={style.Conteudo}>
+      {children} 
+    </div>
+  );
+};
 
 export { Conteudo };

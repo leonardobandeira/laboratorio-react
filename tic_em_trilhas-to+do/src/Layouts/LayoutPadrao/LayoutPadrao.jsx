@@ -1,14 +1,17 @@
 import { Outlet } from "react-router-dom";
 import { Cabecalho, Conteudo, Rodape } from "../../components";
+import { useAppConstant } from "../../hooks/useAppContext";
 
 const LayoutPadrao = () => {
+  const { criador } = useAppConstant();
+  
   return (
     <>
-      <Cabecalho/>
+      <Cabecalho />
       <Conteudo>
         <Outlet />
       </Conteudo>
-      <Rodape criador="Leonardo Bandeira" />
+      <Rodape criador={criador} />
     </>
   );
 };
