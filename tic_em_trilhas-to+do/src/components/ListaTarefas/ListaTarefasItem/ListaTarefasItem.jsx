@@ -1,9 +1,12 @@
-import { Botao, TIPO_BOTAO } from "../../Botao";
+import { Botao, TIPO_BOTAO, CampoTexto } from "./../../../components";
 import { useAppContext } from "../../../hooks";
 import style from "./ListaTarefasItem.module.css";
+import { useState } from "react";
 
 const ListaTarefasItem = (props) => {
   const { id, nome } = props;
+
+  const [editando, setEditando] = useState(false);
 
   const { removerTarefa } = useAppContext();
 
@@ -14,8 +17,18 @@ const ListaTarefasItem = (props) => {
 
   return (
     <li className={style.ListaTarefasItem}>
-      {nome}
-      <Botao texto="-" tipo={TIPO_BOTAO.SECUNDARIO} onClick={console.log("teste")} />
+      {editando && (
+        <CampoTexto/>
+      )}
+
+      {!editando && (
+        <span>{nome}</span>
+      )}
+      <Botao
+        texto="-"
+        tipo={TIPO_BOTAO.SECUNDARIO}
+        onClick={console.log("teste")}
+      />
     </li>
   );
 };
