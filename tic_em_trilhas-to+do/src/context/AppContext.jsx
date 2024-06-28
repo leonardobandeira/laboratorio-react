@@ -9,13 +9,22 @@ export const AppContextProvider = (props) => {
   const [criador, setCriador] = useState("Leonardo Bandeira");
   const [tarefas, setTarefas] = useState([]);
 
+  const [loadCriar, setLoadCriar] = useState(false);
+  const [loadEditar, setLoadEditar] = useState(false);
+  const [loadDeletar, setLoadDeletar] = useState(null);
+  const [loadCarregar, setLoadCarregar] = useState(null);
+
   const carregarTarefas = async () => {
+    setLoadCarregar(true);
     const { data = [] } = await api.get("tarefas");
 
     setTarefas([...data]);
+
+    setLoadCarregar(false);
   };
 
   const adicionarTarefa = async (nomeTarefa) => {
+    setLoadCriar(true);
     const { data: tarefa } = await api.post("tarefas", {
       nome: nomeTarefa,
     });
@@ -23,9 +32,12 @@ export const AppContextProvider = (props) => {
     setTarefas((listaOld) => {
       return [...listaOld, tarefa];
     });
+
+    setLoadCriar(false);
   };
 
   const editarTarefa = async (id, nomeTarefa) => {
+    setLoadEditar(id);
     const { data: tarefaAtualizada } = await api.put(`tarefas/${id}`, {
       nome: nomeTarefa,
     });
@@ -42,9 +54,11 @@ export const AppContextProvider = (props) => {
 
       return tarefasAtualizadas;
     });
+    setLoadEditar(null);
   };
 
   const removerTarefa = async (id) => {
+    setLoadDeletar(id);
     await api.delete(`tarefas/${id}`);
 
     setTarefas((estadoAtual) => {
@@ -52,6 +66,8 @@ export const AppContextProvider = (props) => {
 
       return [...listaAtualizada];
     });
+
+    setLoadDeletar(null);
   };
 
   useEffect(() => {
@@ -60,7 +76,18 @@ export const AppContextProvider = (props) => {
 
   return (
     <AppContext.Provider
-      value={{ criador, tarefas, adicionarTarefa, editarTarefa, removerTarefa }}
+      value={{
+        criador,
+        tarefas,
+        adicionarTarefa,
+        editarTarefa,
+        removerTarefa,
+
+        loadCriar,
+        loadCarregar,
+        loadDeletar,
+        loadEditar,
+      }}
     >
       {children}
     </AppContext.Provider>
