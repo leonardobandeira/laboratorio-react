@@ -15,17 +15,17 @@ const ListaTarefasItem = (props) => {
     removerTarefa(id);
   };
 
+  const onBlurTarefa = (event) => {
+    const nomeTarefa = event.currentTarget.value;
+
+    editarTarefa(id, nomeTarefa);
+    setEditando(false);
+  };
+
   return (
     <li className={style.ListaTarefasItem}>
       {editando && (
-        <CampoTexto
-          defaultValue={nome}
-          autoFocus
-          onChange={(event) => editarTarefa(id, event.currentTarget.value)}
-          onBlur={() => {
-            setEditando(false);
-          }}
-        />
+        <CampoTexto defaultValue={nome} autoFocus onBlur={onBlurTarefa} />
       )}
 
       {!editando && <span onDoubleClick={() => setEditando(true)}>{nome}</span>}
