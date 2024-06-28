@@ -3,12 +3,11 @@ import style from "./FormularioCriarTarefa.module.css";
 import { useState } from "react";
 import { useAppContext } from "../../hooks";
 
-import { Botao } from "../Botao/Botao";
-import { CampoTexto } from "../CampoTexto";
+import { Botao, CampoTexto, Loading } from "./../../components";
 
 const FormularioCriarTarefa = () => {
   const [nomeTarefa, setNomeTarefa] = useState("");
-  const { adicionarTarefa } = useAppContext();
+  const { adicionarTarefa, loadCriar } = useAppContext();
 
   const onChangeNomeTarefa = (event) => {
     setNomeTarefa(event.currentTarget.value);
@@ -26,7 +25,7 @@ const FormularioCriarTarefa = () => {
   return (
     <form className={style.FormularioCriarTarefa} onSubmit={submeterFormulario}>
       <CampoTexto value={nomeTarefa} onChange={onChangeNomeTarefa} />
-      <Botao texto="+" />
+      <Botao texto={loadCriar ? <Loading /> : "+"} />
     </form>
   );
 };
