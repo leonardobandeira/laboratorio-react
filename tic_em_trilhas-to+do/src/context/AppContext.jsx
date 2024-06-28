@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect } from "react";
-import { api } from '../services/api'
+import { api } from "../services/api";
 
 export const AppContext = createContext({});
 
@@ -10,30 +10,32 @@ export const AppContextProvider = (props) => {
   const [tarefas, setTarefas] = useState([]);
 
   const carregarTarefas = async () => {
-    const { data = [] } = await api.get('tarefas')
+    const { data = [] } = await api.get("tarefas");
 
-    setTarefas([
-      ...data
-    ])
+    setTarefas([...data]);
   };
 
   const adicionarTarefa = async (nomeTarefa) => {
-    const { data: tarefa } = await api.post('tarefas', {
-      nome: nomeTarefa
-    })
+    const { data: tarefa } = await api.post("tarefas", {
+      nome: nomeTarefa,
+    });
 
     setTarefas((listaOld) => {
       return [...listaOld, tarefa];
     });
   };
 
-  const editarTarefa = (id, nomeTarefa) => {
+  const editarTarefa = async (id, nomeTarefa) => {
+    const { data: tarefaAtualizada } = await api.put(`tarefas/${id}`, {
+      nome: nomeTarefa,
+    });
+
     setTarefas((estadoAtual) => {
       const tarefasAtualizadas = estadoAtual.map((item) => {
         return item.id === id
           ? {
               ...item,
-              nome: nomeTarefa,
+              nome: tarefaAtualizada.nome,
             }
           : item;
       });
@@ -43,7 +45,7 @@ export const AppContextProvider = (props) => {
   };
 
   const removerTarefa = async (id) => {
-    await api.delete(`tarefas/${id}`)
+    await api.delete(`tarefas/${id}`);
 
     setTarefas((estadoAtual) => {
       const listaAtualizada = estadoAtual.filter((tarefa) => tarefa.id !== id);
