@@ -1,4 +1,5 @@
 import { useState, createContext, useEffect } from "react";
+import { api } from '../services/api'
 
 export const AppContext = createContext({});
 
@@ -6,27 +7,22 @@ export const AppContextProvider = (props) => {
   const { children } = props;
 
   const [criador, setCriador] = useState("Leonardo Bandeira");
-  const [nextId, setNextId] = useState(1);
-
   const [tarefas, setTarefas] = useState([]);
 
   const carregarTarefas = async () => {
-    const { data = [] } = awit api.get('/tarefas')
+    const { data = [] } = await api.get('/tarefas')
 
     setTarefas([
       ...data
     ])
   };
 
-  const adicionarTarefa = (nomeTarefa) => {
+  const adicionarTarefa = async (nomeTarefa) => {
+    const { data: tarefa } = await api.post('/tarefas', {
+      nome: nomeTarefa
+    })
+
     setTarefas((listaOld) => {
-      const tarefa = {
-        id: nextId,
-        nome: nomeTarefa + " - " + nextId,
-      };
-
-      setNextId(nextId + 1);
-
       return [...listaOld, tarefa];
     });
   };
@@ -47,6 +43,7 @@ export const AppContextProvider = (props) => {
   };
 
   const removerTarefa = (id) => {
+
     setTarefas((estadoAtual) => {
       const listaAtualizada = estadoAtual.filter((tarefa) => tarefa.id !== id);
 
@@ -55,8 +52,8 @@ export const AppContextProvider = (props) => {
   };
 
   useEffect(() => {
-    carregarTarefas()
-  })
+    carregarTarefas();
+  }, []);
 
   return (
     <AppContext.Provider
