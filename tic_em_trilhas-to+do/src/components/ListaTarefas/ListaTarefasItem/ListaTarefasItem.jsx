@@ -18,12 +18,15 @@ const ListaTarefasItem = (props) => {
   return (
     <li className={style.ListaTarefasItem}>
       {editando && (
-        <CampoTexto/>
+        <CampoTexto
+          autoFocus
+          onBlur={() => {
+            setEditando(false);
+          }}
+        />
       )}
 
-      {!editando && (
-        <span onDoubleClick={() => setEditando(true)}>{nome}</span>
-      )}
+      {!editando && <span onDoubleClick={() => setEditando(true)}>{nome}</span>}
       <Botao
         texto="-"
         tipo={TIPO_BOTAO.SECUNDARIO}
