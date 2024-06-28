@@ -8,7 +8,7 @@ const ListaTarefasItem = (props) => {
 
   const [editando, setEditando] = useState(false);
 
-  const { removerTarefa } = useAppContext();
+  const { editarTarefa, removerTarefa } = useAppContext();
 
   const handleRemove = () => {
     console.log(`Removendo tarefa com id: ${id}`);
@@ -19,7 +19,9 @@ const ListaTarefasItem = (props) => {
     <li className={style.ListaTarefasItem}>
       {editando && (
         <CampoTexto
+          defaultValue={nome}
           autoFocus
+          onChange={(event) => editarTarefa(id, event.currentTarget.value)}
           onBlur={() => {
             setEditando(false);
           }}
