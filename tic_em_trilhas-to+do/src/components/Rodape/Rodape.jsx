@@ -1,3 +1,4 @@
+import { Loading } from "../Loading";
 import style from "./Rodape.module.css";
 
 const Rodape = (props) => {
@@ -8,6 +9,7 @@ const Rodape = (props) => {
   return (
     <div className={style.Rodape}>
       <span>Tic em Trilhas </span> -- {anoCorrente} -- {criador}
+      <Loading/>
     </div>
   );
 };
