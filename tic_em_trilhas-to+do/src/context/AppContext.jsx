@@ -14,12 +14,27 @@ export const AppContextProvider = (props) => {
     setTarefas((listaOld) => {
       const tarefa = {
         id: nextId,
-        nome: nomeTarefa + ' - ' + nextId,
+        nome: nomeTarefa + " - " + nextId,
       };
 
       setNextId(nextId + 1);
 
       return [...listaOld, tarefa];
+    });
+  };
+
+  const editarTarefa = (id, nomeTarefa) => {
+    setTarefas((estadoAtual) => {
+      const tarefasAtualizadas = estadoAtual.map((item) => {
+        return item.id === id
+          ? {
+              ...item,
+              nome: nomeTarefa,
+            }
+          : item;
+      });
+
+      return tarefasAtualizadas;
     });
   };
 
@@ -30,10 +45,10 @@ export const AppContextProvider = (props) => {
       return [...listaAtualizada];
     });
   };
- 
+
   return (
     <AppContext.Provider
-      value={{ criador, tarefas, adicionarTarefa, removerTarefa }}
+      value={{ criador, tarefas, adicionarTarefa, editarTarefa, removerTarefa }}
     >
       {children}
     </AppContext.Provider>
