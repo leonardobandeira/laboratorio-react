@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 
 export const AppContext = createContext({});
 
@@ -9,6 +9,14 @@ export const AppContextProvider = (props) => {
   const [nextId, setNextId] = useState(1);
 
   const [tarefas, setTarefas] = useState([]);
+
+  const carregarTarefas = async () => {
+    const { data = [] } = awit api.get('/tarefas')
+
+    setTarefas([
+      ...data
+    ])
+  };
 
   const adicionarTarefa = (nomeTarefa) => {
     setTarefas((listaOld) => {
@@ -45,6 +53,10 @@ export const AppContextProvider = (props) => {
       return [...listaAtualizada];
     });
   };
+
+  useEffect(() => {
+    carregarTarefas()
+  })
 
   return (
     <AppContext.Provider
