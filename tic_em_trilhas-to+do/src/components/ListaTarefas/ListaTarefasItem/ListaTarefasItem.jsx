@@ -22,7 +22,7 @@ const ListaTarefasItem = (props) => {
       )}
 
       {!editando && (
-        <span>{nome}</span>
+        <span onDoubleClick={() => setEditando(true)}>{nome}</span>
       )}
       <Botao
         texto="-"
