@@ -1,3 +1,3 @@
-const texto: string = "Olá mundo"
+const texto: string = "Olá mundo v4"
 
 console.log(texto);
