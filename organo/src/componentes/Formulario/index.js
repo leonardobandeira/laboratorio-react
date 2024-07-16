@@ -10,10 +10,10 @@ const Formulario = () => {
       <form>
         <h2>Preencha os dados para criar o membro</h2>
 
-        <CampoTexto label="Nome" placeholder="Digite seu nome" />
-        <CampoTexto label="Cargo" placeholder="Digite seu cargo" />
+        <CampoTexto obrigatorio label="Nome" placeholder="Digite seu nome" />
+        <CampoTexto obrigatorio label="Cargo" placeholder="Digite seu cargo" />
         <CampoTexto label="Imagem" placeholder="Digite o endereço da imagem" />
-        <ListaSuspensa label="Grupo" lista={["teste", "teste2"]} />
+        <ListaSuspensa obrigatorio label="Grupo" lista={["teste", "teste2"]} />
 
         <Botao>Criar novo Nó</Botao>
       </form>
