@@ -3,11 +3,17 @@ import "./Formulario.css";
 import CampoTexto from "./../CampoTexto/CampoTexto";
 import ListaSuspensa from "../ListaSuspensa";
 import Botao from "../Botao";
+import { useState } from "react";
 
 const Formulario = () => {
+  const [nome, setNome] = useState("");
+  const [cargo, setCargo] = useState("");
+  const [imagem, setImagem] = useState("");
+  const [grupo, setGrupo] = useState("");
+
   const aoSubmeter = (evento) => {
     evento.preventDefault();
-    console.log("Aqui na submissão")
+    console.log("Aqui na submissão");
   };
 
   return (
@@ -15,10 +21,33 @@ const Formulario = () => {
       <form onSubmit={aoSubmeter}>
         <h2>Preencha os dados para criar o membro</h2>
 
-        <CampoTexto obrigatorio label="Nome" placeholder="Digite seu nome" />
-        <CampoTexto obrigatorio label="Cargo" placeholder="Digite seu cargo" />
-        <CampoTexto label="Imagem" placeholder="Digite o endereço da imagem" />
-        <ListaSuspensa obrigatorio label="Grupo" lista={["teste", "teste2"]} />
+        <CampoTexto
+          valor={nome}
+          aoAlterar={setNome}
+          label="Nome"
+          obrigatorio
+          placeholder="Digite seu nome"
+        />
+        <CampoTexto
+          valor={cargo}
+          aoAlterar={setCargo}
+          obrigatorio
+          label="Cargo"
+          placeholder="Digite seu cargo"
+        />
+        <CampoTexto
+          valor={imagem}
+          aoAlterar={setImagem}
+          label="Imagem"
+          placeholder="Digite o endereço da imagem"
+        />
+        <ListaSuspensa
+          valor={grupo}
+          aoAlterar={setGrupo}
+          label="Grupo"
+          obrigatorio
+          lista={["teste", "teste2"]}
+        />
 
         <Botao>Criar novo Nó</Botao>
       </form>
