@@ -5,7 +5,7 @@ import ListaSuspensa from "../ListaSuspensa";
 import Botao from "../Botao";
 import { useState } from "react";
 
-const Formulario = () => {
+const Formulario = (props) => {
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
@@ -13,7 +13,12 @@ const Formulario = () => {
 
   const aoSubmeter = (evento) => {
     evento.preventDefault();
-    console.log("Aqui na submissão");
+    props.aoCadastrarUsuario({
+      nome,
+      cargo,
+      imagem,
+      grupo,
+    });
   };
 
   return (
