@@ -6,8 +6,6 @@ import Botao from "../Botao";
 import { useState } from "react";
 
 const Formulario = (props) => {
-  const grupos = ["Frontend", "Backend", "Ui/UX", "Devops"];
-
   const [nome, setNome] = useState("");
   const [cargo, setCargo] = useState("");
   const [imagem, setImagem] = useState("");
@@ -53,7 +51,7 @@ const Formulario = (props) => {
           aoAlterar={setGrupo}
           label="Grupo"
           obrigatorio
-          lista={grupos}
+          lista={props.grupos}
         />
 
         <Botao>Criar novo Nó</Botao>

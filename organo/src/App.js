@@ -37,13 +37,17 @@ function App() {
   return (
     <div className="App">
       <Banner />
-      <Formulario aoCadastrarUsuario={(dados) => salvarCadastro(dados)} />
+      <Formulario
+        grupos={grupos.map((item) => item.grupo)}
+        aoCadastrarUsuario={(dados) => salvarCadastro(dados)}
+      />
 
       {grupos.map((g) => (
-        <Grupo 
-        nome={g.grupo} 
-        corPrimaria={g.corPrimaria} 
-        corSecundaria={g.corSecundaria} />
+        <Grupo
+          nome={g.grupo}
+          corPrimaria={g.corPrimaria}
+          corSecundaria={g.corSecundaria}
+        />
       ))}
     </div>
   );
