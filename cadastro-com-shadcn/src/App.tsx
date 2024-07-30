@@ -5,8 +5,29 @@ import { Table, TableBody, TableCell, TableHead, TableRow } from "./components/u
 import { Search, PlusCircle } from 'lucide-react'
 import { DialogContent, DialogFooter, DialogHeader, DialogTrigger } from "./components/ui/dialog";
 import { Label } from "./components/ui/label";
+import useForm from "./hooks/useForm";
+import { useEffect } from "react";
 
 export default function App() {
+  const { getProdutos, addProduto } = useForm();
+  const dummyProdutos = [
+    { nome: 'Mesa', preco: '150.00' },
+    { nome: 'Cadeira', preco: '50.00' },
+    { nome: 'Sofá', preco: '600.00' },
+    { nome: 'Geladeira', preco: '1200.00' },
+    { nome: 'Fogão', preco: '800.00' },
+    { nome: 'Micro-ondas', preco: '300.00' },
+    { nome: 'Cama', preco: '900.00' },
+    { nome: 'Guarda-roupa', preco: '700.00' },
+    { nome: 'Escrivaninha', preco: '200.00' },
+  ];
+
+  useEffect(() => {
+    dummyProdutos.forEach(produto => addProduto(produto))
+  }, [])
+
+  const produtos = getProdutos()
+
   return (
     <div className="p-6 max-w-4xl mx-auto">
       <div className="text-left text-4xl font-semibold">
@@ -16,7 +37,7 @@ export default function App() {
       <div className="flex items-center justify-between mb-8">
         <form className="flex items-center gap-4">
           <Input name="id" placeholder="ID do pedido" className="w-auto"></Input>
-          <Input name="id" placeholder="Nome do pedido" className="w-auto"></Input>
+          <Input name="nome" placeholder="Nome do pedido" className="w-auto"></Input>
           <Button type="submit" variant="ghost">
             <Search className="w-4 h-4 mr-2" />
             Filtrar resultado
@@ -61,13 +82,13 @@ export default function App() {
           <TableHead>Preço</TableHead>
 
           <TableBody>
-            {Array.from({ length: 20 }).map(
-              (_, i) => {
+            {produtos.map(
+              (produto) => {
                 return (
-                  <TableRow key={i}>
-                    <TableCell>ASD{i}</TableCell>
-                    <TableCell>Produto {i}</TableCell>
-                    <TableCell>R$59,9{i}</TableCell>
+                  <TableRow key={produto.id}>
+                    <TableCell>{produto.id}</TableCell>
+                    <TableCell>{produto.nome}</TableCell>
+                    <TableCell>{produto.preco}</TableCell>
                   </TableRow>
                 )
               }
